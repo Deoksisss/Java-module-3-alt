@@ -4,7 +4,7 @@ import java.util.*;
 
 public class PathFinder {
 
-    private static EndPoints endPointsFinder(char[][] matrix) {
+    public static EndPoints endPointsFinder(char[][] matrix) {
         Point start = null;
         Point finish = null;
 
@@ -27,7 +27,7 @@ public class PathFinder {
         throw new IllegalArgumentException("Карта не содержит старта или финиша");
     }
 
-    private static List<Point> buildPath(Point[][] parent, Point start, Point finish) {
+    private static List<Point> buildPath(Point[][] parent, Point finish) {
         LinkedList<Point> path = new LinkedList<>();
         Point curr = finish;
 
@@ -57,7 +57,7 @@ public class PathFinder {
             Point current = queue.poll();
 
             if (current.equals(finish)) {
-                return buildPath(parent, start, finish);
+                return buildPath(parent, finish);
             }
 
             for (int i = 0; i < 4; i++) {
